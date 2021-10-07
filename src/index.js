@@ -1,12 +1,25 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
+// import 'bulma/css/bulma.min.css';
+// import 'bootstrap/dist/css/bootstrap.min.css';
 import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
+import Amplify from '@aws-amplify/core';
+import config from './config.json';
+
+Amplify.configure({
+  Auth: {
+    mandatorySignId: true,
+    region: config.cognito.REGION,
+    userPoolId: config.cognito.USER_POOL_ID, 
+    userPoolWebClientId: config.cognito.APP_CLIENT_ID
+  }
+})
 
 ReactDOM.render(
   <React.StrictMode>
-    <App />
+    <App ss={Math.random() * 1000000000000000000}/>
   </React.StrictMode>,
   document.getElementById('root')
 );
