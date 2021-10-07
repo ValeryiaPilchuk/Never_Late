@@ -1,9 +1,20 @@
 import React from 'react'
+import envelope from '../static/envelope.e7283f94.svg'
 
 export default function Footer() {
     return (
-        <h1>
-            Footer
-        </h1>
+        <footer className="footer">
+            <div className="content has-text-centered">
+                <div className="media">
+                    <div className="p-1">
+                    </div>
+                    <div className="media-body">
+                        <div className="h5 p-1">
+                            <img src={envelope} alt="contract us" className="contact" />  <strong>Email:</strong> <a href="mailto:email@domain.com">email@domain.com</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </footer>
     )
 }
