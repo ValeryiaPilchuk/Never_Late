@@ -1,6 +1,6 @@
 import React from "react";
 
-function FormErrors(props) {
+export default function FormError(props) {
   if (
     props.formerrors &&
     (props.formerrors.blankfield || props.formerrors.passwordmatch)
@@ -35,5 +35,3 @@ function FormErrors(props) {
     return <div />;
   }
 }
-
-export default FormErrors;
