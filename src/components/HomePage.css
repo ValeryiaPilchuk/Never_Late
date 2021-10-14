@@ -1,0 +1,17 @@
+body {
+  text-align: center;
+}
+
+.homePage {
+  text-align: center;
+  margin-bottom: 90px;
+  margin-top: 50px;
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+}
+h1 {
+  font-size: 70px;
+}
+
+p {
+  font-size: 30px;
+}
