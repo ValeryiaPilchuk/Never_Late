@@ -9,6 +9,7 @@ export default class Navbar extends Component {
             await Auth.signOut();
             this.props.auth.setAuthStatus(false);
             this.props.auth.setUser(null);
+            this.props.history.push("/");
         } catch (error) {
             console.log(error.message);
         }
@@ -18,6 +19,7 @@ export default class Navbar extends Component {
             <nav className="navbar is-fixed-top" role="navigation" aria-label="main navigation">
                 <div className="navbar-brand">
                     <Link className="navbar-item" to="/" exact>
+                        {/* Replace this part with the logo of the company */}
                         logo
                     </Link>
                 </div>
@@ -42,7 +44,7 @@ export default class Navbar extends Component {
                                 </div>
                             )}
                             {this.props.auth.isAuthenticated && (
-                                <Link to='/' exact className="button is-light">
+                                <Link onClick={this.handleLogOut} className="button is-light">
                                     Log out
                                 </Link>
                             )}

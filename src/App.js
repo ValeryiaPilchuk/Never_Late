@@ -9,6 +9,11 @@ import Signup from './components/Signup';
 import Login from './components/Login';
 import Dashboard from './components/Dashboard';
 import Footer from './components/Footer';
+import Welcome from './components/Welcome';
+import ForgotPassword from './components/authentication/ForgotPassword';
+import ForgotPasswordVerification from './components/authentication/ForgotPasswordVerification';
+import ChangePassword from './components/authentication/ChangePassword';
+import ChangePasswordConfirmation from './components/authentication/ChangePasswordConfirmation';
 
 
 export default class App extends Component {
@@ -74,6 +79,11 @@ export default class App extends Component {
               <Route exact path="/signup" render={(props) => <Signup {...props} auth={authProps} />} />
               <Route exact path="/login" render={(props) => <Login {...props} auth={authProps} />} />
               <Route exact path="/dashboard" render={(props) => <Dashboard {...props} auth={authProps} />} />
+              <Route exact path="/welcome" render={(props) => <Welcome {...props} auth={authProps} />} />
+              <Route exact path="/forgotpassword" render={(props) => <ForgotPassword {...props} auth={authProps} />} />
+              <Route exact path="/forgotpasswordverification" render={(props) => <ForgotPasswordVerification {...props} auth={authProps} />} />
+              <Route exact path="/changepassword" render={(props) => <ChangePassword {...props} auth={authProps} />} />
+              <Route exact path="/changepasswordconfirm" render={(props) => <ChangePasswordConfirmation {...props} auth={authProps} />} />
               
             </Switch>
             <Footer/>
