@@ -49,8 +49,6 @@ export default class Signup extends Component {
                 }
             });
 
-            console.log(signUpResponse);
-
             this.props.history.push("/welcome");
         } catch (error) {
             let err = null;

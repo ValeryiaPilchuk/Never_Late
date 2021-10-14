@@ -1,5 +1,7 @@
 import Auth from '@aws-amplify/auth';
 import React, { Component } from 'react'
+import  './Navbar.css';
+
 import { Link } from 'react-router-dom'
 
 export default class Navbar extends Component {
