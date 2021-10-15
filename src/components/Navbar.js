@@ -22,9 +22,9 @@ export default class Navbar extends Component {
         return (
             <nav className="navbar is-fixed-top" role="navigation" aria-label="main navigation">
                 <div className="navbar-brand">
-                    <Link className="navbar-item" to="/" exact>
+                    <Link className="navbar-item" to="/" exact style={{textDecoration:'none'}}>
                         {/* Replace this part with the logo of the company */}
-                        logo
+                        NeverLate
                     </Link>
                 </div>
                 <div className="navbar-end">
