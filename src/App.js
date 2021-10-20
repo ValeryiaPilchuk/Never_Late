@@ -8,6 +8,7 @@ import Home from './components/Home';
 import Feature from './components/Feature';
 import Signup from './components/Signup';
 import Login from './components/Login';
+import Profile from './components/Profile';
 import Dashboard from './components/Dashboard';
 import Footer from './components/Footer';
 import Welcome from './components/Welcome';
@@ -87,7 +88,7 @@ export default class App extends Component {
               <Route exact path="/forgotpasswordverification" render={(props) => <ForgotPasswordVerification {...props} auth={authProps} />} />
               <Route exact path="/changepassword" render={(props) => <ChangePassword {...props} auth={authProps} />} />
               <Route exact path="/changepasswordconfirm" render={(props) => <ChangePasswordConfirmation {...props} auth={authProps} />} />
-              
+              <Route exact path="/profile" render={(props) => <Profile {...props} auth={authProps} />} />
             </Switch>
             <Feature/>
             <Footer/>
