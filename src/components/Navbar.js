@@ -2,6 +2,8 @@ import Auth from '@aws-amplify/auth';
 import React, { Component } from 'react'
 import  './Navbar.css';
 import { Link } from 'react-router-dom'
+import MenuIcon from '@mui/icons-material/Menu';
+
 
 
 export default class Navbar extends Component {
@@ -49,6 +51,11 @@ export default class Navbar extends Component {
                             {this.props.auth.isAuthenticated && (
                                 <Link to="/" onClick={this.handleLogOut} className="button is-light">
                                     Log out
+                                </Link>
+                            )}
+                            {this.props.auth.isAuthenticated && (
+                                <Link to="/profile"  className="button is-light">
+                                    <MenuIcon />
                                 </Link>
                             )}
                         </div>
