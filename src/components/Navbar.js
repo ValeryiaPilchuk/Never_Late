@@ -1,8 +1,8 @@
 import Auth from '@aws-amplify/auth';
 import React, { Component } from 'react'
 import  './Navbar.css';
-
 import { Link } from 'react-router-dom'
+
 
 export default class Navbar extends Component {
     handleLogOut = async event => {
@@ -11,7 +11,9 @@ export default class Navbar extends Component {
             await Auth.signOut();
             this.props.auth.setAuthStatus(false);
             this.props.auth.setUser(null);
-            this.props.history.push("/");
+            // this.props.history.push("/");
+            // window.location.reload();
+            
         } catch (error) {
             console.log(error.message);
         }
@@ -20,20 +22,14 @@ export default class Navbar extends Component {
         return (
             <nav className="navbar is-fixed-top" role="navigation" aria-label="main navigation">
                 <div className="navbar-brand">
-                    <Link className="navbar-item" to="/" exact>
+                    <Link className="navbar-item" to="/" exact style={{textDecoration:'none'}}>
                         {/* Replace this part with the logo of the company */}
-                        logo
+                        NeverLate
                     </Link>
                 </div>
                 <div className="navbar-end">
                     <div className="navbar-item">
-                        {this.props.auth.isAuthenticated && this.props.auth.user && (
-                            <p>
-                                <Link className="button is-light" to="/dashboard">
-                                    Welcome {this.props.auth.user.username}
-                                </Link>
-                            </p>
-                        )}
+                        
                         <div className="buttons">
                             {!this.props.auth.isAuthenticated && (
                                 <div>
@@ -45,8 +41,13 @@ export default class Navbar extends Component {
                                     </Link>
                                 </div>
                             )}
+                            {this.props.auth.isAuthenticated && this.props.auth.user && (
+                                <Link className="button is-light" to="/dashboard">
+                                    Welcome {this.props.auth.user.username}
+                                </Link>
+                            )}
                             {this.props.auth.isAuthenticated && (
-                                <Link onClick={this.handleLogOut} className="button is-light">
+                                <Link to="/" onClick={this.handleLogOut} className="button is-light">
                                     Log out
                                 </Link>
                             )}
