@@ -5,6 +5,7 @@ import Auth from '@aws-amplify/auth';
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 import Navbar from './components/Navbar';
 import Home from './components/Home';
+import Feature from './components/Feature';
 import Signup from './components/Signup';
 import Login from './components/Login';
 import Dashboard from './components/Dashboard';
@@ -88,6 +89,7 @@ export default class App extends Component {
               <Route exact path="/changepasswordconfirm" render={(props) => <ChangePasswordConfirmation {...props} auth={authProps} />} />
               
             </Switch>
+            <Feature/>
             <Footer/>
           </div>
         </Router>
