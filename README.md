@@ -6,6 +6,24 @@
 
 description of the app
 
+# Team
+
+- Tenzin Tashi
+- Valeryia Pilchuk
+- Michali
+- Anil B
+- Yang
+- Alice
+
+# Technologies Used
+
+- React JS
+- Node JS
+- Express
+- Mongo DB
+- Python
+- AWS Cognito
+
 # How to install/run it?
 
 ### Pre-requisite: Software needed to run the project

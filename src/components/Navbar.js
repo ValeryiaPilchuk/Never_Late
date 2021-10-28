@@ -9,16 +9,18 @@ import MenuIcon from '@mui/icons-material/Menu';
 export default class Navbar extends Component {
     handleLogOut = async event => {
         event.preventDefault();
-        try {
+        
+        try { 
             await Auth.signOut();
             this.props.auth.setAuthStatus(false);
             this.props.auth.setUser(null);
-            // this.props.history.push("/");
-            // window.location.reload();
+            
             
         } catch (error) {
             console.log(error.message);
         }
+        this.props.history.push("/");
+        window.location.reload();
     }
     render() {
         return (

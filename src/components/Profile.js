@@ -26,7 +26,7 @@ export default function Profile() {
             <div className="panel-body">
                 <div className="media">
                     <div className="media-left media-middle">
-                        <a href="#"><img alt="image" className="media-object img-circle img-thumbnail thumb48" src="https://external-preview.redd.it/IqMKJvPNfvnuKMqE16CvCM--btJpr6pcZ32wtXvnssY.jpg?auto=webp&s=29fc97533ffd3e4adb5e889cc545700810bf4996" /></a>
+                        <img alt="image1" className="media-object img-circle img-thumbnail thumb48" src="https://external-preview.redd.it/IqMKJvPNfvnuKMqE16CvCM--btJpr6pcZ32wtXvnssY.jpg?auto=webp&s=29fc97533ffd3e4adb5e889cc545700810bf4996" />
                     </div>
                     <div className="media-body pt-sm">
                         <div className="text-bold">Clarinet Practice
@@ -36,7 +36,7 @@ export default function Profile() {
                 </div>
                 <div className="media">
                     <div className="media-left media-middle">
-                        <a href="#"><img alt="image" className="media-object img-circle img-thumbnail thumb48" src="https://images.gamebanana.com/img/ico/sprays/5f804891da197.png"/></a>
+                        <img alt="image2" className="media-object img-circle img-thumbnail thumb48" src="https://images.gamebanana.com/img/ico/sprays/5f804891da197.png"/>
                     </div>
                     <div className="media-body pt-sm">
                         <div className="text-bold">Petrology
@@ -46,7 +46,7 @@ export default function Profile() {
                 </div>
                 <div className="media">
                     <div className="media-left media-middle">
-                        <a href="#"><img alt="image" className="media-object img-circle img-thumbnail thumb48" src="https://lh3.googleusercontent.com/proxy/aT9L0UqWG_c_Aiogpc8USYwKTcaZ7hUL4b7wVMXWryiqWyl1wb8UKZYL5MEJOzc9w30RxO2CNWwFmhqUyZgx7735KqnT0fdHWm0sYNCkD5AL6y5U" /></a>
+                        <img alt="image3" className="media-object img-circle img-thumbnail thumb48" src="https://lh3.googleusercontent.com/proxy/aT9L0UqWG_c_Aiogpc8USYwKTcaZ7hUL4b7wVMXWryiqWyl1wb8UKZYL5MEJOzc9w30RxO2CNWwFmhqUyZgx7735KqnT0fdHWm0sYNCkD5AL6y5U" />
                     </div>
                     <div className="media-body pt-sm">
                         <div className="text-bold">Add class
