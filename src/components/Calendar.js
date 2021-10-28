@@ -5,7 +5,7 @@ import './Calendar.css'
 
 export default class Calendar extends Component {
 
-  localData: EventSettingsModel = {
+  localData = {
     dataSource: [
       {
         Id: 1,
