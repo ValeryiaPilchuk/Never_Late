@@ -7,7 +7,9 @@ import MenuIcon from '@mui/icons-material/Menu';
 
 
 export default class Navbar extends Component {
+
     handleLogOut = async event => {
+        // this.props.history.push("/");
         event.preventDefault();
         
         try { 
@@ -19,12 +21,11 @@ export default class Navbar extends Component {
         } catch (error) {
             console.log(error.message);
         }
-        this.props.history.push("/");
         window.location.reload();
     }
     render() {
         return (
-            <nav className="navbar is-fixed-top" role="navigation" aria-label="main navigation">
+            !this.props.isAuthenticated && <nav className="navbar is-fixed-top" role="navigation" aria-label="main navigation">
                 <div className="navbar-brand">
                     <Link className="navbar-item" to="/" exact style={{textDecoration:'none'}}>
                         {/* Replace this part with the logo of the company */}
