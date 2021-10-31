@@ -7,24 +7,30 @@ const neverlateModel = mongoose.Schema(
             type: String,
             require: true
         },
-        classes: [
+        assignment: [
             {
-                name: {
+                Subject: {
                     type: String,
                     require: true
                 },
-                events : [
-                    {
-                        assignment_name: {
-                            type: String,
-                            require: true
-                        },
-                        due_date: {
-                            type: String,
-                            require: true
-                        }
-                    }
-                ]
+                StartTime: {
+                    type: String,
+                    require: true
+                },
+                EndTime: {
+                    type: String,
+                    require: true
+                },
+                IsAllDay: {
+                    type: Boolean,
+                    default: false,
+                    require: true
+                },
+                IsReadonly: {
+                    type: Boolean,
+                    default: true,
+                    require: true
+                },
             }
         ]
             
