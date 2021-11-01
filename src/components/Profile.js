@@ -1,8 +1,15 @@
 import React from 'react'
 import './Profile.css';
 
+
+
+
+
 export default function Profile() {
+
     return(
+        <div>
+ 
        <div className="container bootstrap snippets bootdey">
 
 <div className="row ng-scope">
@@ -36,7 +43,7 @@ export default function Profile() {
                 </div>
                 <div className="media">
                     <div className="media-left media-middle">
-                        <img alt="image2" className="media-object img-circle img-thumbnail thumb48" src="https://images.gamebanana.com/img/ico/sprays/5f804891da197.png"/>
+                        <img alt="image2" className="media-object img-circle img-thumbnail thumb48"  src="https://images.gamebanana.com/img/ico/sprays/5f804891da197.png"/>
                     </div>
                     <div className="media-body pt-sm">
                         <div className="text-bold">Petrology
@@ -72,58 +79,59 @@ export default function Profile() {
                 <div className="row pv-lg">
                     <div className="col-lg-2"></div>
                     <div className="col-lg-8">
-                        <form className="form-horizontal ng-pristine ng-valid">
-                            <div className="form-group">
-                                <label className="col-sm-2 control-label" for="inputContact1">Name</label>
+                        <hm className="hm-horizontal ng-pristine ng-valid">
+                            <div className="hm-group">
+                                <label className="col-sm-2 control-label" h="inputContact1">Name</label>
                                 <div className="col-sm-10">
-                                    <input className="form-control" id="inputContact1" type="text" placeholder="Patrick Star" />
+                                    <input  className="hm-control" data_testid="3333" id="inputContact1" type="text" placeholder="Patrick Star" />
                                 </div>
                             </div>
-                            <div className="form-group">
-                                <label className="col-sm-2 control-label" for="inputContact2">Email</label>
+                            <div className="hm-group">
+                                <label className="col-sm-2 control-label" h="inputContact2">Email</label>
                                 <div className="col-sm-10">
-                                    <input className="form-control" id="inputContact2" type="email" placeholder="pstar123@ccny.cuny.edu"/>
+                                    <input className="hm-control" id="inputContact2" type="email" placeholder="pstar123@ccny.cuny.edu"/>
                                 </div>
                             </div>
-                            <div className="form-group">
-                                <label className="col-sm-2 control-label" for="inputContact3">Mobile</label>
+                            <div className="hm-group">
+                                <label className="col-sm-2 control-label" h="inputContact3">Mobile</label>
                                 <div className="col-sm-10">
-                                    <input className="form-control" id="inputContact3" type="text" placeholder="(123) 465 789"/>
+                                    <input className="hm-control" id="inputContact3" type="text" placeholder="(123) 465 789"/>
                                 </div>
                             </div>
-                            <div className="form-group">
-                                <label className="col-sm-2 control-label" for="inputContact5">Website</label>
+                            <div className="hm-group">
+                                <label className="col-sm-2 control-label" htmlFor="inputContact5">Website</label>
                                 <div className="col-sm-10">
-                                    <input className="form-control" id="inputContact5" type="text" placeholder="https://bbhosted.cuny.edu/"/>
+                                    <input className="hm-control" id="inputContact5" type="text" placeholder="https://bbhosted.cuny.edu/"/>
                                 </div>
                             </div>
-                            <div className="form-group">
-                                <label className="col-sm-2 control-label" for="inputContact6">Username</label>
+                            <div className="hm-group">
+                                <label className="col-sm-2 control-label" h="inputContact6">Username</label>
                                 <div className="col-sm-10">
-                                    <input className="form-control" id="inputContact6" type="text" placeholder = "Star.Patrick"/>
+                                    <input data_testid="Patrick" className="hm-control" id="inputContact6" type="text" placeholder = "Star.Patrick"/>
                                 </div>
                             </div>
-                            <div className="form-group">
-                                <label className="col-sm-2 control-label" for="inputContact7">Password</label>
+                            <div className="hm-group">
+                                <label className="col-sm-2 control-label" h="inputContact7">Password</label>
                                 <div className="col-sm-10">
-                                    <input className="form-control" id="inputContact7" type="text" placeholder="PatrickIzTheStar"/>
+                                    <input className="hm-control" id="inputContact7" type="text" placeholder="PatrickIzTheStar"/>
                                 </div>
                             </div>
-                            <div className="form-group">
+                            <div className="hm-group">
                                 <div className="col-sm-offset-2 col-sm-10">
                                 </div>
                             </div>
-                            <div className="form-group">
+                            <div className="hm-group">
                                 <div className="col-sm-offset-2 col-sm-10">
                                     <button className="btn btn-info" type="submit">Update</button>
                                 </div>
                             </div>
-                        </form>
+                        </hm>
                     </div>
                 </div>
             </div>
         </div>
     </div>
+</div>
 </div>
 </div>
     )
