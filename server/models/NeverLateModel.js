@@ -1,13 +1,29 @@
 import mongoose from "mongoose";
 
-const neverlateModel = mongoose.Schema(
+const neverLateSchema = new mongoose.Schema(
     {
 
         user: { 
             type: String,
-            require: true
+            require: true,
+            unique: true
         },
-        assignment: [
+        email: {
+            type: String,
+            required: true,
+            unique: true
+        },
+        username: {
+            type: String,
+            require: true,
+            default: ""
+        },
+        password: {
+            type: String,
+            require: true,
+            default: ""
+        },
+        assignments: [
             {
                 Subject: {
                     type: String,
@@ -40,5 +56,5 @@ const neverlateModel = mongoose.Schema(
         timestamps: true,
     }
 );
-const neverlate= mongoose.model("Neverlate", neverlateModel);
-export default neverlate;
+const NeverLate = mongoose.model("NeverLate", neverLateSchema);
+export default NeverLate;

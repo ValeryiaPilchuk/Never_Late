@@ -1,3 +1,4 @@
+import axios from 'axios';
 import React, {useState} from 'react'
 import './Profile.css';
 
@@ -5,16 +6,25 @@ export default function Profile(props) {
     const [phoneNumber, setPhonenumber] = useState(null)
     const [userName, setUserName] = useState(null)
     const [password, setPassword] = useState(null)
-    const formSubmitHandler = (event) => {
+    const formSubmitHandler = async (event) => {
         event.preventDefault();
         let data = {
-            "name": props.auth.user.username,
+            "user": props.auth.user.username,
             "email": props.auth.user.attributes.email,
-            "userName": userName,
-            "password": password,
-            "phoneNumber": phoneNumber,
+            "username": userName,
+            "password": password
         }
-        console.log(`data = ${data}`)
+        
+        await axios.post('/profile/update', data)
+            .then((result) => {
+                console.log(`http response result: ${result}`);
+                alert(`Information Succesfully Saved`)
+            })
+            .catch((error) => {
+                console.error(error);
+            });
+        
+        
     }
     return (
         !props.auth.isAuthenticated ? props.history.push("/") :
