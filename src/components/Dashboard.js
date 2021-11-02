@@ -58,7 +58,6 @@ export default function Dashboard(props) {
                             IsAllDay: false,
                             IsReadonly: true,
                         }
-                        console.log(`ass: ${JSON.stringify(assignment)}`)
                         parsedData.Id = assignment._id
                         parsedData.Subject = assignment.Subject
                         parsedData.StartTime = new Date(calculateStartDateTime(assignment['Due Date'], assignment.Time))
@@ -109,7 +108,6 @@ export default function Dashboard(props) {
                     }
                 </Grid>
             }
-            {console.log(assignments)}
         </>
     );
 }

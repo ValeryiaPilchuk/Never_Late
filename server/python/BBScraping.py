@@ -8,7 +8,7 @@ import os
 import time
 
 # Username & Password
-USER = "tenzin"  # sys.argv[1]
+USER = sys.argv[1]
 USERNAME = sys.argv[2]
 PASSWORD = sys.argv[3]
 
@@ -54,11 +54,11 @@ while(driver.find_element_by_id('anonymous_element_7').text != 'December 2021'):
     driver.find_element_by_xpath("//button[@title='Next Period']").click()
     time.sleep(10)
 driver.quit()
-[index for assignment, index in enumerate(
-    assignments) if index not in assignments[assignment + 1:]]
+
 
 entry = {
     'user': USER,
-    'assignments': assignments
+    'assignments': [index for assignment, index in enumerate(
+        assignments) if index not in assignments[assignment + 1:]]
 }
 collection_name.update_one({'user': USER}, {"$set": entry}, True)
