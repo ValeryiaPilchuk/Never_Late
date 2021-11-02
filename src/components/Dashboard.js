@@ -73,7 +73,8 @@ export default function Dashboard(props) {
         setTimeout(() => {
             setLoading(false)
         },fetchAssignment())
-    },[props.auth.user.username])
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+    },[])
 
     return (
         <>
