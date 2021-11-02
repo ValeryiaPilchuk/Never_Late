@@ -93,7 +93,7 @@ export default function Dashboard(props) {
                         </Grid>
                         <Grid item>
                             <Paper sx={2}>
-                                <Calendar assignments={assignments.length > 0 ? assignments : []} />
+                                <Calendar assignments={assignments} />
                             </Paper>
                         </Grid>
                         {/* <Grid item>
@@ -105,6 +105,7 @@ export default function Dashboard(props) {
                         
                 }
             </Grid>
+            
         </>
     );
 }

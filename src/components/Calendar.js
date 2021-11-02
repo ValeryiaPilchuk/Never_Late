@@ -6,15 +6,18 @@ import { Inject, ScheduleComponent, Day, Week, Month, ViewsDirective, ViewDirect
 export default class Calendar extends Component {
 
   state = {
-    localData: this.props.assignments
-  }
-
-  componentDidUpdate(prevProps, prevState) {
-    if (prevProps !== this.props.assignments) {
-      this.setState({ localData: this.props.assignments })
-    }
+    localData: null
   }
   
+  componentDidMount() {
+    this.setState({localData: this.props.assignments})
+  }
+
+  componentDidUpdate() {
+    if (this.state.localData !== this.props.assignments) {
+      this.setState({localData: this.props.assignments})
+    }
+  }
 
   render() {
     return (
