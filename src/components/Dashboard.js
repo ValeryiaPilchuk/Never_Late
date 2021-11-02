@@ -6,33 +6,7 @@ import axios from 'axios';
 
 export default function Dashboard(props) {
     const [loading, setLoading] = useState(false);
-    const [assignments, setAssignments] = useState(
-        [
-            {
-            Id: 1,
-            Subject: 'CSc 456: Assignment 1',
-            StartTime: new Date(2021, 10, 8, 4, 0), //yyyy-mm-dd (index 0) 
-            EndTime: new Date(2021, 10, 8, 6, 30), 
-            IsAllDay: false,
-            IsReadonly: true,
-            },
-            {
-            Id: 2,
-            Subject: 'CSc 456: Assignment 2',
-            StartTime: new Date(2021, 10, 10, 4, 0),
-            EndTime: new Date(2021, 10, 10, 6, 30),
-            IsAllDay: false,
-            IsReadonly: true,
-            },
-            {
-            Id: 3,
-            Subject: 'CSc 456: Assignment 3',
-            StartTime: new Date(2021, 10, 13, 4, 0),
-            EndTime: new Date(2021, 10, 13, 6, 30),
-            IsAllDay: false,
-            IsReadonly: true,
-            }
-        ]
+    const [assignments, setAssignments] = useState([]
     );
 
     const calculateStartDateTime = (date, time) => {
@@ -73,18 +47,20 @@ export default function Dashboard(props) {
                 })
                 .then((res) => {
                     let parsedAssignment = []
-                    let parsedData = {
-                        Id: 0,
-                        Subject: 'Title',
-                        StartTime: new Date(2021, 10, 13, 4, 0),
-                        EndTime: new Date(2021, 10, 13, 6, 30),
-                        IsAllDay: false,
-                        IsReadonly: true,
-                    }
+                    
                     // eslint-disable-next-line array-callback-return
                     res.data.map(assignment => {
+                        let parsedData = {
+                            Id: 0,
+                            Subject: 'Title',
+                            StartTime: null,
+                            EndTime: null,
+                            IsAllDay: false,
+                            IsReadonly: true,
+                        }
+                        console.log(`ass: ${JSON.stringify(assignment)}`)
                         parsedData.Id = assignment._id
-                        parsedData.Subject = assignment.Title
+                        parsedData.Subject = assignment.Subject
                         parsedData.StartTime = new Date(calculateStartDateTime(assignment['Due Date'], assignment.Time))
                         parsedData.EndTime = new Date(calculateEndDateTime(assignment['Due Date'], assignment.Time))
                         parsedAssignment.push(parsedData)
@@ -102,36 +78,38 @@ export default function Dashboard(props) {
 
     return (
         <>
-            {console.log(`assignments: ${JSON.parse(assignments)}`)}
             {!props.auth.isAuthenticated && props.history.push("/")}
-            <Grid container justifyContent="center" alignItems="center" pr={2} pl={2}>
-                { loading ?
-                    <ClockLoader
-                        size={60}
-                        color={"#123abc"}
-                        loading={loading}
-                    />
-                    :
-                    <Grid container display="grid" gridAutoFlow="column" spacing={1}>
-                        <Grid item>
-                            <Paper sx={{textAlign: "center", padding:"5%", minHeight:"45vh", width:"40%", minWidth:"300px"}} >
-                                Add Courses
-                            </Paper>
+            {assignments.length > 0 &&
+                <Grid container justifyContent="center" alignItems="center" pr={2} pl={2}>
+                    {loading ?
+                        <ClockLoader
+                            size={60}
+                            color={"#123abc"}
+                            loading={loading}
+                        />
+                        :
+                        <Grid container display="grid" gridAutoFlow="column" spacing={1}>
+                            <Grid item>
+                                <Paper sx={{ textAlign: "center", padding: "5%", minHeight: "45vh", width: "40%", minWidth: "300px" }} >
+                                    Add Courses
+                                </Paper>
+                            </Grid>
+                            <Grid item>
+                                <Paper sx={2}>
+                                    <Calendar assignments={assignments} />
+                                </Paper>
+                            </Grid>
+                            {/* <Grid item>
+                                <Paper sx={{textAlign: "center", padding:"5%", minHeight:"45vh", width:"40%", minWidth:"300px"}} >
+                                    Due Today
+                                </Paper>
+                            </Grid> */}
                         </Grid>
-                        <Grid item>
-                            <Paper sx={2}>
-                                <Calendar assignments={assignments} />
-                            </Paper>
-                        </Grid>
-                        {/* <Grid item>
-                            <Paper sx={{textAlign: "center", padding:"5%", minHeight:"45vh", width:"40%", minWidth:"300px"}} >
-                                Due Today
-                            </Paper>
-                        </Grid> */}
-                    </Grid>
-                        
-                }
-            </Grid>
+                            
+                    }
+                </Grid>
+            }
+            {console.log(assignments)}
         </>
     );
 }

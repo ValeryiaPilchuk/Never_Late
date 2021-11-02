@@ -5,11 +5,20 @@ import { Inject, ScheduleComponent, Day, Week, Month, ViewsDirective, ViewDirect
 
 export default class Calendar extends Component {
 
-  localData = this.props.assignments
+  state = {
+    localData: this.props.assignments
+  }
+
+  componentDidUpdate(prevProps, prevState) {
+    if (prevProps !== this.props.assignments) {
+      this.setState({ localData: this.props.assignments })
+    }
+  }
+  
 
   render() {
     return (
-      <ScheduleComponent currentView='Month' width='100%' ref={schedule => this.scheduleObj = schedule} eventSettings={{ dataSource: this.localData }}>
+      <ScheduleComponent currentView='Month' width='100%' ref={schedule => this.scheduleObj = schedule} eventSettings={{ dataSource: this.state.localData }}>
         <ViewsDirective>
           <ViewDirective option='Day'></ViewDirective>
           <ViewDirective option='Week'></ViewDirective>
