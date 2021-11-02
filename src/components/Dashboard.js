@@ -6,8 +6,7 @@ import axios from 'axios';
 
 export default function Dashboard(props) {
     const [loading, setLoading] = useState(false);
-    const [assignments, setAssignments] = useState([]
-    );
+    const [assignments, setAssignments] = useState([]);
 
     const calculateStartDateTime = (date, time) => {
         if (time.includes('p')) {
@@ -73,42 +72,39 @@ export default function Dashboard(props) {
         setTimeout(() => {
             setLoading(false)
         },fetchAssignment())
-    // eslint-disable-next-line react-hooks/exhaustive-deps
     },[])
 
     return (
         <>
             {!props.auth.isAuthenticated && props.history.push("/")}
-            {assignments.length > 0 &&
-                <Grid container justifyContent="center" alignItems="center" pr={2} pl={2}>
-                    {loading ?
-                        <ClockLoader
-                            size={60}
-                            color={"#123abc"}
-                            loading={loading}
-                        />
-                        :
-                        <Grid container display="grid" gridAutoFlow="column" spacing={1}>
-                            <Grid item>
-                                <Paper sx={{ textAlign: "center", padding: "5%", minHeight: "45vh", width: "40%", minWidth: "300px" }} >
-                                    Add Courses
-                                </Paper>
-                            </Grid>
-                            <Grid item>
-                                <Paper sx={2}>
-                                    <Calendar assignments={assignments} />
-                                </Paper>
-                            </Grid>
-                            {/* <Grid item>
-                                <Paper sx={{textAlign: "center", padding:"5%", minHeight:"45vh", width:"40%", minWidth:"300px"}} >
-                                    Due Today
-                                </Paper>
-                            </Grid> */}
+            <Grid container justifyContent="center" alignItems="center" pr={2} pl={2}>
+                {loading ?
+                    <ClockLoader
+                        size={60}
+                        color={"#123abc"}
+                        loading={loading}
+                    />
+                    :
+                    <Grid container display="grid" gridAutoFlow="column" spacing={1}>
+                        <Grid item>
+                            <Paper sx={{ textAlign: "center", padding: "5%", minHeight: "45vh", width: "40%", minWidth: "300px" }} >
+                                Add Courses
+                            </Paper>
                         </Grid>
-                            
-                    }
-                </Grid>
-            }
+                        <Grid item>
+                            <Paper sx={2}>
+                                <Calendar assignments={assignments.length > 0 ? assignments : []} />
+                            </Paper>
+                        </Grid>
+                        {/* <Grid item>
+                            <Paper sx={{textAlign: "center", padding:"5%", minHeight:"45vh", width:"40%", minWidth:"300px"}} >
+                                Due Today
+                            </Paper>
+                        </Grid> */}
+                    </Grid>
+                        
+                }
+            </Grid>
         </>
     );
 }
