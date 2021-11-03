@@ -46,9 +46,8 @@ export default function Dashboard(props) {
                 })
                 .then((res) => {
                     let parsedAssignment = []
-                    
                     // eslint-disable-next-line array-callback-return
-                    res.data.map(assignment => {
+                    res.data.assignments.map(assignment => {
                         let parsedData = {
                             Id: 0,
                             Subject: 'Title',

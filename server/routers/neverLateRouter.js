@@ -31,7 +31,7 @@ neverLateRouter.post(
             const entry = {
                 user: req.body.user,
                 email: req.body.email,
-                username: req.body.user,
+                username: req.body.username,
                 password: cryptr.encrypt(req.body.password)
             }
             NeverLate.create(entry, (error, data) => {
@@ -52,7 +52,8 @@ neverLateRouter.get(
         // console.log(req.query.user);
         const user = await NeverLate.findOne({ user: req.query.user })
         if (user) {
-            return res.json(user.assignments)
+            user.password = cryptr.decrypt(user.password)
+            return res.json(user)
         }
         return res.send('User not found')
     })

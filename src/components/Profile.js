@@ -14,7 +14,6 @@ export default function Profile(props) {
             "username": userName,
             "password": password
         }
-        
         await axios.post('/profile/update', data)
             .then((result) => {
                 console.log(`http response result: ${result}`);
