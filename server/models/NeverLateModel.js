@@ -1,30 +1,52 @@
 import mongoose from "mongoose";
 
-const neverlateModel = mongoose.Schema(
+const neverLateSchema = new mongoose.Schema(
     {
 
         user: { 
             type: String,
-            require: true
+            require: true,
+            unique: true
         },
-        classes: [
+        email: {
+            type: String,
+            required: true,
+            unique: true
+        },
+        username: {
+            type: String,
+            require: true,
+            default: ""
+        },
+        password: {
+            type: String,
+            require: true,
+            default: ""
+        },
+        assignments: [
             {
-                name: {
+                Subject: {
                     type: String,
                     require: true
                 },
-                events : [
-                    {
-                        assignment_name: {
-                            type: String,
-                            require: true
-                        },
-                        due_date: {
-                            type: String,
-                            require: true
-                        }
-                    }
-                ]
+                StartTime: {
+                    type: String,
+                    require: true
+                },
+                EndTime: {
+                    type: String,
+                    require: true
+                },
+                IsAllDay: {
+                    type: Boolean,
+                    default: false,
+                    require: true
+                },
+                IsReadonly: {
+                    type: Boolean,
+                    default: true,
+                    require: true
+                },
             }
         ]
             
@@ -34,5 +56,5 @@ const neverlateModel = mongoose.Schema(
         timestamps: true,
     }
 );
-const neverlate= mongoose.model("Neverlate", neverlateModel);
-export default neverlate;
+const NeverLate = mongoose.model("NeverLate", neverLateSchema);
+export default NeverLate;

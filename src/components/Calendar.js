@@ -1,46 +1,33 @@
 import React, { Component } from 'react'
-import { Inject, ScheduleComponent, Day, Week, Month, DragAndDrop, Resize } from '@syncfusion/ej2-react-schedule'
-
+import { Inject, ScheduleComponent, Day, Week, Month, ViewsDirective, ViewDirective } from '@syncfusion/ej2-react-schedule'
+// import './Calendar.css'
 
 
 export default class Calendar extends Component {
 
-  localData = {
-    dataSource: [
-      {
-        Id: 1,
-        Subject: 'CSc 456: Assignment 2',
-        StartTime: new Date(2021, 10, 23, 4, 0),
-        EndTime: new Date(2021, 10, 23, 6, 30),
-        IsAllDay: false,
-        // RecurrenceRule: 'FREQ=DAILY;INTERVAL=1;COUNT=10'
-        // IsReadonly: true,
-      },
-      {
-        Id: 2,
-        Subject: 'CSc 456: Assignment 2',
-        StartTime: new Date(2021, 10, 20, 4, 0),
-        EndTime: new Date(2021, 10, 20, 6, 30),
-        IsAllDay: false,
-        // RecurrenceRule: 'FREQ=DAILY;INTERVAL=1;COUNT=10'
-        // IsReadonly: true,
-      },
-      {
-        Id: 3,
-        Subject: 'CSc 456: Assignment 2',
-        StartTime: new Date(2021, 10, 18, 4, 0),
-        EndTime: new Date(2021, 10, 18, 6, 30),
-        IsAllDay: false,
-        // RecurrenceRule: 'FREQ=DAILY;INTERVAL=1;COUNT=10'
-        // IsReadonly: true,
-      }
-    ]
-  };
+  state = {
+    localData: null
+  }
+  
+  componentDidMount() {
+    this.setState({localData: this.props.assignments})
+  }
+
+  componentDidUpdate() {
+    if (this.state.localData !== this.props.assignments) {
+      this.setState({localData: this.props.assignments})
+    }
+  }
 
   render() {
     return (
-      <ScheduleComponent currentView='Month' eventSettings={this.localData} allowDragAndDrop={true} allowResizing={true} >
-        <Inject services={[Day, Week, Month, DragAndDrop, Resize]} />
+      <ScheduleComponent currentView='Month' width='100%' ref={schedule => this.scheduleObj = schedule} eventSettings={{ dataSource: this.state.localData }}>
+        <ViewsDirective>
+          <ViewDirective option='Day'></ViewDirective>
+          <ViewDirective option='Week'></ViewDirective>
+          <ViewDirective option='Month' isSelected={true}></ViewDirective>
+        </ViewsDirective>
+        <Inject services={[Day, Week, Month]} />
       </ScheduleComponent>
     )
   }
