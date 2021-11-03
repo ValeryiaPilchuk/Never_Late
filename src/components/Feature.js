@@ -14,7 +14,7 @@ export default function Feature(){
         <Grid item  md={4} >
             <Paper sx= {{textAlign: "center", padding:"5%", background:'pink'}}> 
                 
-                <h3 className ="feature-title">Esay to Start </h3>
+                <h3 className ="feature-title">Easy to Start </h3>
                 <p>Just connect with your BlackBoard account and the website will automatically update the assignment due day   </p>
              </Paper>
         </Grid>     
