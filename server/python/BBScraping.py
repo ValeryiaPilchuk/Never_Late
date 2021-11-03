@@ -8,9 +8,9 @@ import os
 import time
 
 # Username & Password
-USER = "tenzin"  # sys.argv[1]
-USERNAME = "tenzin.tashi84"  # sys.argv[2]
-PASSWORD = "Hyderhassan!3"  # sys.argv[3]
+USER = sys.argv[1]
+USERNAME = sys.argv[2]
+PASSWORD = sys.argv[3]
 
 # connection to MongoDB
 client = MongoClient('localhost', 27017)
