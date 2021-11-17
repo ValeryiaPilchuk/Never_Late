@@ -11,6 +11,7 @@ import Profile from './components/Profile';
 import Dashboard from './components/Dashboard';
 import Footer from './components/Footer';
 import Welcome from './components/Welcome';
+import Input from './components/Input';
 import ForgotPassword from './components/authentication/ForgotPassword';
 import ForgotPasswordVerification from './components/authentication/ForgotPasswordVerification';
 import ChangePassword from './components/authentication/ChangePassword';
@@ -87,6 +88,7 @@ export default class App extends Component {
               <Route exact path="/forgotpasswordverification" render={(props) => <ForgotPasswordVerification {...props} auth={authProps} />} />
               <Route exact path="/changepassword" render={(props) => <ChangePassword {...props} auth={authProps} />} />
               <Route exact path="/changepasswordconfirm" render={(props) => <ChangePasswordConfirmation {...props} auth={authProps} />} />
+              <Route exact path="/input" render={(props) => <Input {...props} auth={authProps} />} />
               <Route exact path="/profile" render={(props) => <Profile {...props} auth={authProps} />} />
             </Switch>
             <Footer/>

@@ -1,31 +1,59 @@
 import tabula
-import pdfplumber
-import pandas as pd
-import pymongo
-import json
 
-dfs2 = tabula.read_pdf("https://www.clevelandmetroschools.org/cms/lib/OH01915844/Centricity/Domain/274/Tables%20of%20Values.pdf")
-file = 'Assignment1.pdf'
+from tabula import read_pdf
+from csv import reader, DictReader
+from pymongo import MongoClient
 
-lines = []
 
-with pdfplumber.open(file) as pdf:
-    pages = pdf.pages
-    for page in pdf.pages:
-        text = page.extract_text()
-        for line in text.split('\n'):
-            lines.append(line)
-            print(line)
+# pprint library is used to make the output look more pretty
+from pprint import pprint
+# connect to MongoDB, change the << MONGODB URL >> to reflect your own connection string
+client = MongoClient("mongodb://localhost/neverlate")
+db=client.admin
+# Issue the serverStatus command and print the results
+serverStatusResult=db.command("serverStatus")
+pprint(serverStatusResult)
 
-df = pd.DataFrame(lines)
+assignment = '../__tests__/pdf samples/Syllabus_Sample1.pdf'
 
-df.to_csv('test.csv')
+#scans the pdf file and looks for all tables
+table = read_pdf(assignment, pages="all", multiple_tables=True)
+tabula.convert_into(assignment, "../__tests__/pdf samples/assignment_output.csv", output_format="csv", pages='all')
+csv_assignment = "../__tests__/pdf samples/assignment_output.csv"
 
-# Read pdf into a list of DataFrame
-dfs = tabula.read_pdf("table_example.pdf", pages='all')
-# Read remote pdf into a list of DataFrame
-dfs2 = tabula.read_pdf("https://www.clevelandmetroschools.org/cms/lib/OH01915844/Centricity/Domain/274/Tables%20of%20Values.pdf")
-# convert PDF into CSV
-tabula.convert_into("table_example.pdf", "output2.csv", output_format="csv", pages='all')
-tabula.convert_into("https://www.clevelandmetroschools.org/cms/lib/OH01915844/Centricity/Domain/274/Tables%20of%20Values.pdf", "output3.csv", output_format="csv", pages='all')
+with open(csv_assignment, 'r') as read_obj:
+
+    # pass the file object to DictReader() to get the DictReader object
+    csv_reader = reader(read_obj)
+    csv_dict_reader = DictReader(read_obj)
+
+    # get column names from a csv file
+    column_names = csv_dict_reader.fieldnames
+    global description
+    description = ""
+    global date
+    date = ""
+    for row in column_names:
+        if "assignment" in row:
+            description = row
+            print(column_names, row, 1)
+        elif "Assignment" in row:
+            description = row
+            print(column_names, row, 11)
+        if "date" in row:
+            date = row
+            print(column_names, date, 2)
+        elif "Date" in row:
+            date = row
+            print(column_names, date, 22)
+        elif "Week" in row:
+            date = row
+            print(column_names, date, 222)
+
+
+    for row in csv_dict_reader:
+        print(row[date], row[description])
+
+
+
 
