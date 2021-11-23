@@ -1,6 +1,10 @@
 # NeverLate
 
+<<<<<<< HEAD
 <img src="src/static/NeverLate-logos.jpeg" width="100" height="100">
+=======
+<img src="client/src/static/NeverLate-logos.jpeg" width="100" height="100">
+>>>>>>> cbaaac3e113254561561d970428ea06645ae0dae
 
 # Description
 
@@ -24,6 +28,12 @@ description of the app
 - Python
 - AWS Cognito
 
+<<<<<<< HEAD
+=======
+# Live Demo
+<a href="http://204.48.22.15/">http://204.48.22.15/</a>
+
+>>>>>>> cbaaac3e113254561561d970428ea06645ae0dae
 # How to install/run it?
 
 ### Pre-requisite: Software needed to run the project
@@ -48,6 +58,7 @@ git clone https://github.com/ValeryiaPilchuk/Never_Late.git
 cd neverlate
 ```
 
+<<<<<<< HEAD
 - Install the needed dependencies
 
 ```
@@ -67,8 +78,40 @@ Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
 
 ```
 cd server
+=======
+### `Run the backend of the project`
+
+```
+node server.js
+```
+
+This will start the backend of the project in the development mode.<br>
+Open [http://localhost:5000](http://localhost:5000) to view it in the browser.
+
+### `Run the frontend of the project`
+
+- Change to client folder
+
+```
+cd client
+```
+
+- Install the needed dependencies
+
+```
+npm install
+```
+
+- Run the client server
+
+```
+>>>>>>> cbaaac3e113254561561d970428ea06645ae0dae
 npm start
 ```
 
 This will start the project in the development mode.<br>
+<<<<<<< HEAD
 Open [http://localhost:8000](http://localhost:8000) to view it in the browser.
+=======
+Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+>>>>>>> cbaaac3e113254561561d970428ea06645ae0dae

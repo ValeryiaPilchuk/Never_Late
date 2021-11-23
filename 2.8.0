@@ -1,0 +1,10 @@
++ @babel/core@7.13.0
++ typescript@4.5.2
++ @mui/material@5.0.0
+added 27 packages from 13 contributors, updated 1 package and audited 2220 packages in 21.696s
+
+177 packages are looking for funding
+  run `npm fund` for details
+
+found 15 vulnerabilities (10 moderate, 4 high, 1 critical)
+  run `npm audit fix` to fix them, or `npm audit` for details
