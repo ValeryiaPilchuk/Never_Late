@@ -1,7 +1,7 @@
 import Auth from '@aws-amplify/auth';
 import React, { Component } from 'react'
 import  './Navbar.css';
-import { Link } from 'react-router-dom'
+import { Link, Redirect } from 'react-router-dom'
 import logo from '../static/NeverLate-logos.jpeg';
 
 
@@ -33,10 +33,22 @@ export default class Navbar extends Component {
                         NeverLate
                     </Link>
                 </div>
+
+
+               
                 <div className="navbar-end">
+
                     <div className="navbar-item">
                         
                         <div className="buttons">
+
+                        {this.props.auth.isAuthenticated && this.props.auth.user && (
+                                <Link className="button is-dark " to="/">
+                                   Welcome {this.props.auth.user.username} 
+                                  
+                                </Link>
+                            )}
+
                             {!this.props.auth.isAuthenticated && (
                                 <div>
                                     <Link to="/signup" className="button is-link">
