@@ -2,7 +2,6 @@ import Auth from '@aws-amplify/auth';
 import React, { Component } from 'react'
 import  './Navbar.css';
 import { Link } from 'react-router-dom'
-import MenuIcon from '@mui/icons-material/Menu';
 import logo from '../static/NeverLate-logos.jpeg';
 
 
@@ -48,9 +47,17 @@ export default class Navbar extends Component {
                                     </Link>
                                 </div>
                             )}
+                        
+
                             {this.props.auth.isAuthenticated && this.props.auth.user && (
                                 <Link className="button is-light" to="/dashboard">
-                                    Welcome {this.props.auth.user.username}
+                                  {/* Welcome {this.props.auth.user.username} */}  
+                                  Calendar
+                                </Link>
+                            )}
+                            {this.props.auth.isAuthenticated && (
+                                <Link to="/profile"  className="button is-light">
+                                    Profile
                                 </Link>
                             )}
                             {this.props.auth.isAuthenticated && (
@@ -58,11 +65,7 @@ export default class Navbar extends Component {
                                     Log out
                                 </Link>
                             )}
-                            {this.props.auth.isAuthenticated && (
-                                <Link to="/profile"  className="button is-light">
-                                    <MenuIcon />
-                                </Link>
-                            )}
+                          
                         </div>
                     </div>
                 </div>
