@@ -6,10 +6,10 @@ import Feature from './Feature';
 export default function Home() {
     return (
         <>
-        <div  className="homePage">
+        <div   data-testid='h-1' className="homePage">
             <br/><br/><br/>
             
-            <div className= "title">
+            <div data-testid='h-2' className= "title">
             <h1>
                 Welcome to NeverLate 
             </h1>
@@ -17,7 +17,7 @@ export default function Home() {
             </div>  
             
             </div>
-            <Feature/>
+            <Feature data-testid='h-3' />
         </>
     )
 }
