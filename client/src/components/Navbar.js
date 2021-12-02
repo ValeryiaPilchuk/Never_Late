@@ -1,7 +1,7 @@
 import Auth from '@aws-amplify/auth';
 import React, { Component } from 'react'
 import  './Navbar.css';
-import { Link, Redirect } from 'react-router-dom'
+import { Link } from 'react-router-dom'
 import logo from '../static/NeverLate-logos.jpeg';
 
 
