@@ -7,7 +7,7 @@ import pandas as pd
 from email.mime.multipart import MIMEMultipart 
 import time
 import schedule
-
+from datetime import date
 """
     This file is for send reminder email to users.
 """
@@ -26,6 +26,7 @@ print (email_found)
 new_list = list(map(lambda x:list(x.values())[0],email_found))
 print(new_list )
 
+
 def sentmail():
 
     msg = MIMEMultipart('alternatvie')
@@ -37,11 +38,14 @@ def sentmail():
         from_email= "latenever294@gmail.com"
         password = "12qwaszxQWASZX"
         msg['TO'] = ",".join(new_list)
-        msg = "check you email"
+        email = "nianxc@gmail.com"
+        msg['Subject'] = "NeverLate"
+        msg = "Hi NeverLate User,\r\r\nPlease check your blackboard. \r\r\n Thank you"
 
         server = smtplib.SMTP('smtp.gmail.com',587)
         server.starttls()
         server.login(from_email,password)
+        #server.sendmail(from_email,email,msg)
         server.sendmail(from_email,new_list,msg)
         server.close()
         print("email is sent")
@@ -49,6 +53,10 @@ def sentmail():
         print(str(e))
         print("failed to send email")
 
+sentmail()
 
-
-schedule.every().day.at("10:30").do(sentmail)
+# schedule.every().day.at("21:37").do(sentmail)
+# while True:
+#     schedule.run_pending()
+#     time.sleep(1)
+# Start the scheduler
