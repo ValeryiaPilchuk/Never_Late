@@ -84,7 +84,7 @@ export default class Login extends Component {
                             </p>
                         </div>
                         <div className="field">
-                            <p className="control has-icons-left">
+                            <p className="control">
                                 <input 
                                     className="input" 
                                     type="password"
