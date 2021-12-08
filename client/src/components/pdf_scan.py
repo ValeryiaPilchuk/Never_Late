@@ -1,31 +1,73 @@
+import sys
 import tabula
-import pdfplumber
-import pandas as pd
-import pymongo
-import json
+from tabula import read_pdf
+from csv import reader, DictReader
+from pymongo import MongoClient
+from pprint import pprint
 
-dfs2 = tabula.read_pdf("https://www.clevelandmetroschools.org/cms/lib/OH01915844/Centricity/Domain/274/Tables%20of%20Values.pdf")
-file = 'Assignment1.pdf'
 
-lines = []
+def pdf_scan():
+    # Username
+    USER = sys.argv[1]
 
-with pdfplumber.open(file) as pdf:
-    pages = pdf.pages
-    for page in pdf.pages:
-        text = page.extract_text()
-        for line in text.split('\n'):
-            lines.append(line)
-            print(line)
+    # connection to MongoDB
+    client = MongoClient('localhost', 27017)
+    db = client.neverlate
+    collection_name = db.neverlates
 
-df = pd.DataFrame(lines)
+    # Issue the serverStatus command and print the results
+    serverStatusResult=db.command("serverStatus")
 
-df.to_csv('test.csv')
+    #check to see if properly connected
+    pprint(serverStatusResult)
 
-# Read pdf into a list of DataFrame
-dfs = tabula.read_pdf("table_example.pdf", pages='all')
-# Read remote pdf into a list of DataFrame
-dfs2 = tabula.read_pdf("https://www.clevelandmetroschools.org/cms/lib/OH01915844/Centricity/Domain/274/Tables%20of%20Values.pdf")
-# convert PDF into CSV
-tabula.convert_into("table_example.pdf", "output2.csv", output_format="csv", pages='all')
-tabula.convert_into("https://www.clevelandmetroschools.org/cms/lib/OH01915844/Centricity/Domain/274/Tables%20of%20Values.pdf", "output3.csv", output_format="csv", pages='all')
 
+    assignment = '../__tests__/pdf samples/Syllabus_Sample1.pdf'
+    assignments = []
+
+    #scans the pdf file and looks for all tables
+    table = read_pdf(assignment, pages="all", multiple_tables=True)
+    tabula.convert_into(assignment, "../__tests__/pdf samples/assignment_output.csv", output_format="csv", pages='all')
+    csv_assignment = "../__tests__/pdf samples/assignment_output.csv"
+
+
+    with open(csv_assignment, 'r') as read_obj:
+
+        # pass the file object to DictReader() to get the DictReader object
+        csv_reader = reader(read_obj)
+        csv_dict_reader = DictReader(read_obj)
+
+        # get column names from a csv file
+        column_names = csv_dict_reader.fieldnames
+        global description
+        description = ""
+        global date
+        date = ""
+        for row in column_names:
+            if "assignment" in row:
+                description = row
+                print(column_names, row)
+            elif "Assignment" in row:
+                description = row
+                print(column_names, row)
+            if "date" in row:
+                date = row
+                print(column_names, date)
+            elif "Date" in row:
+                date = row
+                print(column_names, date)
+            elif "Week" in row:
+                date = row
+                print(column_names, date)
+
+        for row in csv_dict_reader:
+            assignments.append(row[date], row[description])
+        #    print(row[date], row[description])
+
+    entry = {
+        'user': USER,
+        'assignments': [index for assignment, index in enumerate(
+            assignments) if index not in assignments[assignment + 1:]]
+    }
+
+    collection_name.update_one({'user': USER}, {"$set": entry}, True)

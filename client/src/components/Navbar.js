@@ -23,6 +23,7 @@ export default class Navbar extends Component {
         }
         window.location.reload();
     }
+
     render() {
         return (
             !this.props.isAuthenticated && <nav className="navbar is-fixed-top" role="navigation" aria-label="main navigation">
@@ -68,8 +69,15 @@ export default class Navbar extends Component {
                                 </Link>
                             )}
                             {this.props.auth.isAuthenticated && (
-                                <Link to="/profile"  className="button is-light">
-                                    Profile
+
+                                <Link className="button is-light" to="/input">
+                                    PDF Upload
+                                </Link>
+                            )}
+                            {this.props.auth.isAuthenticated && (
+                                <Link to="/" onClick={this.handleLogOut} className="button is-light">
+                                    Log out
+
                                 </Link>
                             )}
                             {this.props.auth.isAuthenticated && (
