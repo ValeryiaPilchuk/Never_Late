@@ -7,12 +7,10 @@ from pprint import pprint
 
 
 def pdf_scan():
-    # Username & Password
+    # Username
     USER = sys.argv[1]
-    USERNAME = sys.argv[2]
-    PASSWORD = sys.argv[3]
 
-    # connect to MongoDB
+    # connection to MongoDB
     client = MongoClient('localhost', 27017)
     db = client.neverlate
     collection_name = db.neverlates
