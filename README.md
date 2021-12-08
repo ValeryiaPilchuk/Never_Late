@@ -29,11 +29,14 @@ description of the app
 - AWS Cognito
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
 # Live Demo
 <a href="http://204.48.22.15/">http://204.48.22.15/</a>
 
 >>>>>>> cbaaac3e113254561561d970428ea06645ae0dae
+=======
+>>>>>>> parent of 52a473d (Update README.md)
 # How to install/run it?
 
 ### Pre-requisite: Software needed to run the project
