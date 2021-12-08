@@ -35,9 +35,13 @@ const neverLateSchema = new mongoose.Schema(
                     type: String,
                     require: true
                 },
+                Description: {
+                    type: String,
+                    require: false
+                },
                 StartTime: {
                     type: String,
-                    require: true
+                    require: false
                 },
                 EndTime: {
                     type: String,
