@@ -21,7 +21,7 @@ collection_name = db.neverlates
 chrome_options = Options()
 chrome_options.add_argument("--headless")
 driver = webdriver.Chrome(
-    executable_path='/Users/tenzintashi/Downloads/CSc 456 - Topic in SE/neverlate/python/chromedriver', options=chrome_options)  # change the path if it doesn't work
+    executable_path='./chromedriver', options=chrome_options)
 
 # login
 driver.get('https://bbhosted.cuny.edu/webapps/calendar/viewPersonal')
