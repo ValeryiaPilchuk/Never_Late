@@ -3,10 +3,8 @@ import './HomePage.css';
 import Feature from './Feature';
 
 
-
-export default function Home(props) {
+export default function Home() {
     return (
-
         <>
         <div   data-testid='h-1' className="homePage">
             <br/><br/><br/>
@@ -21,6 +19,5 @@ export default function Home(props) {
             </div>
             <Feature data-testid='h-3' />
         </>
-
     )
 }
