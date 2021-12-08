@@ -10,7 +10,6 @@ test('should render Photo component', () => {
     render(<Photo/>);
     const todoElement = screen.getByTestId('photo-${user}');
     expect(todoElement).toBeInTheDocument();
-
 }
 )
 it('renders without crashing', () => {

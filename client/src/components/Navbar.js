@@ -2,7 +2,6 @@ import Auth from '@aws-amplify/auth';
 import React, { Component } from 'react'
 import  './Navbar.css';
 import { Link } from 'react-router-dom'
-import MenuIcon from '@mui/icons-material/Menu';
 import logo from '../static/NeverLate-logos.jpeg';
 
 
@@ -35,10 +34,22 @@ export default class Navbar extends Component {
                         NeverLate
                     </Link>
                 </div>
+
+
+               
                 <div className="navbar-end">
+
                     <div className="navbar-item">
                         
                         <div className="buttons">
+
+                        {this.props.auth.isAuthenticated && this.props.auth.user && (
+                                <Link className="button is-dark " to="/">
+                                   Welcome {this.props.auth.user.username} 
+                                  
+                                </Link>
+                            )}
+
                             {!this.props.auth.isAuthenticated && (
                                 <div>
                                     <Link to="/signup" className="button is-link">
@@ -49,12 +60,16 @@ export default class Navbar extends Component {
                                     </Link>
                                 </div>
                             )}
+                        
+
                             {this.props.auth.isAuthenticated && this.props.auth.user && (
                                 <Link className="button is-light" to="/dashboard">
-                                    Welcome {this.props.auth.user.username}
+                                  {/* Welcome {this.props.auth.user.username} */}  
+                                  Calendar
                                 </Link>
                             )}
                             {this.props.auth.isAuthenticated && (
+
                                 <Link className="button is-light" to="/input">
                                     PDF Upload
                                 </Link>
@@ -62,13 +77,15 @@ export default class Navbar extends Component {
                             {this.props.auth.isAuthenticated && (
                                 <Link to="/" onClick={this.handleLogOut} className="button is-light">
                                     Log out
+
                                 </Link>
                             )}
                             {this.props.auth.isAuthenticated && (
-                                <Link to="/profile"  className="button is-light">
-                                    <MenuIcon />
+                                <Link to="/" onClick={this.handleLogOut} className="button is-light">
+                                    Log out
                                 </Link>
                             )}
+                          
                         </div>
                     </div>
                 </div>
