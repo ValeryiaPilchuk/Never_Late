@@ -4,7 +4,7 @@
 
 # Description
 
-description of the app
+NeverLate is an app based on helping students remember the deadlines for their assignments. It is set up to take in a pdf of a syllabus or/and scrape blackboard for given assignments and then add the given assignments to the user calendar. The user will also be reminded of the assignments due via email. 
 
 # Team
 
